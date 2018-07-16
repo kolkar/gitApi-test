@@ -1,0 +1,36 @@
+<div class="container"  ng-class="{'loader' : vmSearchOfRepController.loading}">
+        <div class="form-group row">
+        <label class="col-form-label" style="margin-right: 20px">Search repositories by language </label>
+        <select class="custom-select" ng-model="vmSearchOfRepController.options" ng-change="vmSearchOfRepController.searchRepos()">
+            <option value="">Please selected</option>
+            <option value="language:Java" selected>Java</option>
+            <option value="language:C++">C++</option>
+            <option value="language:JavaScript">JavaScript</option>
+            <option value="language:Swift">Swift</option>
+            <option value="language:Ruby">Ruby</option>
+        </select>
+    </div>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th>Check</th>
+            <th>URL</th>
+            <th>Language</th>
+            <th>Name</th>
+             <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr class="repo-tr" ng-repeat="repo in vmSearchOfRepController.repos track by $index" ng-click="vmSearchOfRepController.checkRepos($index)">
+            <td><input ng-model="repo.checked" type="checkbox"></td>
+            <td ng-bind="repo.url"></td>
+            <td ng-bind="repo.language"></td>
+            <td ng-bind="repo.name"></td>
+            <td ng-bind="repo.description"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
